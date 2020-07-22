@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'gallery',
     loadChildren: () => import('./gallery/gallery.module').then( m => m.GalleryPageModule)
   },
+  {
+    path: 'gallery-detail',
+    loadChildren: () => import('./gallery-detail/gallery-detail.module').then( m => m.GalleryDetailPageModule)
+  },
 ];
 
 @NgModule({

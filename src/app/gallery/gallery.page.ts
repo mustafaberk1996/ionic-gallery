@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleryService } from '../services/gallery/gallery.service';
 import { Photo } from '../modal/Photo';
-import {LoadingController} from '@ionic/angular';
+import {LoadingController, NavController} from '@ionic/angular';
+import { NavExtrasServiceService } from '../services/nav-extras-service/nav-extras-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -12,7 +14,11 @@ export class GalleryPage implements OnInit {
   
   
   items:Array<Photo> = [];
-  constructor(private galleryService:GalleryService,private loadingController:LoadingController) { 
+  constructor(private navExtraService:NavExtrasServiceService,
+     private navCtrl:NavController,
+     private router:Router,
+      private galleryService:GalleryService,
+      private loadingController:LoadingController) { 
   this.presentLoading();
     this.galleryService.getList().subscribe(d=> {
     this.items=d;
@@ -41,6 +47,12 @@ message:'Veriler yükleniyor lütfen bekleyin...'
 });
 
 (await loading).present();
+  }
+
+  goDetail(item){
+    this.navExtraService.setExtras(item);
+    this.router.navigate(['gallery-detail']);
+  // this.navCtrl.navigateForward(['gallery-detail',item]); 
   }
 
   ngOnInit() {

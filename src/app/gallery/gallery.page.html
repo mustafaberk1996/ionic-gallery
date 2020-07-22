@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="gallery-item" *ngFor="let item of items" >
+  <div class="gallery-item" (click)='goDetail(item);' *ngFor="let item of items" >
     <p class="title">{{item.title}} <ion-badge color="secondary">{{item.id}}</ion-badge> </p>
     <div class="gallery-photo" style='background-image:url({{item.url}});'></div>
     <ion-grid>

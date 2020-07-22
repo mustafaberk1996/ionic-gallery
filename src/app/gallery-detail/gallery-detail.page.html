@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-title>{{item.title}}</ion-title>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  {{item.id}}
+  {{item.title}}
+ <div style="width: 400px; height: 200px; background-image: url({{item.url}});"></div> 
+</ion-content>
