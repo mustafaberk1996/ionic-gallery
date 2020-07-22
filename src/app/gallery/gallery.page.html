@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-title>Gallery</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="gallery-item" *ngFor="let item of items" >
+    <p class="title">{{item.title}} <ion-badge color="secondary">{{item.id}}</ion-badge> </p>
+    <div class="gallery-photo" style='background-image:url({{item.url}});'></div>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-align-self-center">
+          <ion-button color="primary">
+            <ion-icon slot="start" name="detail"></ion-icon>
+            Details</ion-button>
+        </ion-col>
+      <ion-col class="ion-align-self-center">
+        <ion-button color="success">
+          <ion-icon slot="start" name="star"></ion-icon>
+          Vote</ion-button>
+      </ion-col>
+      <ion-col class="ion-align-self-center">
+        <ion-button color="danger" (click)='delete(item);'>
+          <ion-icon slot="start" name="trash"></ion-icon>
+          Delete</ion-button>
+
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
